@@ -11,18 +11,18 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        ListNode* current=head;
-        int length=0;
-        while(current!=NULL){
-            length++;
-            current=current->next;
-        }
-        // current 0 ho jata hai ishloye diclied karna again
-        current=head;
-        int n=length/2;
-        for(int i=0;i<n;i++){
-            current=current->next;
-        }
-        return current;
+     ListNode* current=head;
+     int length=0;
+     while(current!=NULL){
+        current=current->next;
+        length++;
+     }
+     int n=length/2;
+    //  current ko rediclaid karna padta hai kiyoki zero ho jata he
+     current=head;
+     for(int i=0;i<n;i++){
+        current=current->next;
+     }
+     return current;
     }
 };
