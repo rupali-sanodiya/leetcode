@@ -7,7 +7,7 @@ public:
         for(int i=1;i<nums.size();i++){
             maximum=max(maximum+nums[i],nums[i]);
             minimum=min(minimum+nums[i],nums[i]);
-            result=max({abs(result),abs(maximum),abs(minimum)});
+            result=max({result,abs(maximum),abs(minimum)});
             
         }
         return result;
