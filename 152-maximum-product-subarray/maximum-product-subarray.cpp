@@ -1,28 +1,34 @@
+// class Solution {
+// public:
+//     int maxProduct(vector<int>& nums) {
+//  int maximum=nums[0];
+//  int ans=nums[0];
+//  for(int i=1;i<nums.size();i++ ){
+//     int v1=maximum*nums[i];
+//     int v2=nums[i];
+//     maximum=max(v1,v2);
+//     ans=max(ans,maximum);
+//  }
+//  return ans;
+//     }
+// };
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-      int product=1;
-      int minimum=nums[0];
-      for(int i=0;i<nums.size();i++){
-        product*=nums[i];
-        if(product>minimum){
-   minimum=product;
+        long long currMax = nums[0];
+        long long currMin = nums[0];
+        long long ans = nums[0];
+
+        for (int i = 1; i < static_cast<int>(nums.size()); i++) {
+            long long num = nums[i];
+            if (num < 0) {
+                swap(currMax, currMin);
+            }
+            currMax = max(num, currMax * num);
+            currMin = min(num, currMin * num);
+            ans = max(ans, currMax);
         }
-        if(product==0){
-            product=1;
-        }
-      
-      }
-product=1;
-      for(int i=nums.size()-1;i>0;i--){
-        product*=nums[i];
-        if(product>minimum){
-            minimum=product;
-        }
-        if(product==0){
-            product=1;
-        }
-      }
-      return minimum; 
+
+        return static_cast<int>(ans);
     }
 };
